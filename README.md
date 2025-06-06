@@ -63,11 +63,11 @@ streamlit run app.py
 
 ## Usage Examples
 
-#### Example Input 1:
+#### Example Input:
 
 - "Need a sunset-view table for two tonight; gluten-free menu a must"
 
-#### Example Output 1:
+#### Example Output:
 
 - ```json
   {
