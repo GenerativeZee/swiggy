@@ -175,3 +175,39 @@ output10: {
     "Are you looking for flights, accommodation, or a complete package?"
   ]"
 }
+
+
+
+###### BONUS ######
+
+query: How to update phone number associated with aadhar
+output: 
+{"search_response":[
+  {"title":"Aadhar Card Mobile Number Change - How to change Mobile Number in ...",
+  "url":"https://cleartax.in/s/how-to-update-mobile-number-in-aadhaar-card",
+  "description":"Thus, it is essential to update your mobile number with the UIDAI and ensure that the mobile number in use is linked to your Aadhaar card. There is no restriction on the number of times you can update"},
+
+  {"title":"Updating data on Aadhaar - Unique Identification Authority of India",
+  "url":"https://uidai.gov.in/en/my-aadhaar/about-your-aadhaar/updating-data-on-aadhaar.html",
+  "description":"Done by the operator on update client as requested by the Aadhaar number holder. Handles spelling, language issues, transliteration, etc. Operator will provide biometric sign off against every update "},
+
+  {"title":"How to change phone number in Aadhaar card online: step-by-step guide",
+  "url":"https://www.indiatoday.in/technology/tech-tips/story/how-to-change-phone-number-on-aadhaar-card-online-step-by-step-guide-2348985-2023-03-20",
+  "description":"Fill out the Aadhaar Update/Correction form. - Recheck and submit your form to the Aadhaar executive. - You will be charged a minimal service of Rs 50 for the update. Pay the fee to the Aadhaar execut"}],
+
+  "confidence_score":"0.2"}
+
+
+  query2: how to apply for passport
+  {"search_response":[
+    
+    {"title":"U.S. passports - USAGov","url":"https://www.usa.gov/passport",
+    "description":"Learn how to get a passport for travel to most countries outside the U.S. Find out if you can renew by mail or online, or if you need a new one, and what to do if your passport is lost or stolen."},
+
+    {"title":"Passports - U.S. Embassy & Consulates in India","url":"https://in.usembassy.gov/u-s-citizen-services/passports/",
+    "description":"The processing time for routine passport renewals in India is 2-3 weeks. If you are traveling within the next 2 weeks, please review our emergency passport information page. Key Passport Services. By "},
+
+    {"title":"Prepare to Apply for a Passport Homepage - Travel","url":"https://travel.state.gov/content/travel/en/passports/how-apply.html",
+    "description":"Learn how to fill out your form, submit your photo, and provide evidence of U.S. citizenship and photo ID for your passport application. Find out the processing times, costs, and requirements for diff"}],
+  
+  "confidence_score":"0.1"}

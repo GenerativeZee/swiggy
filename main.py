@@ -2,10 +2,13 @@ from langgraph.graph import START, StateGraph, END
 from fastapi.responses import JSONResponse
 from typing import TypedDict, List, Dict
 from langchain_openai import ChatOpenAI
+# from duckduckgo_search import ddg
+from duckduckgo_search import DDGS
 from langgraph.types import Command
 from utils.utils import callLLM
 from pydantic import BaseModel
 from fastapi import FastAPI
+from urllib.parse import quote_plus
 import requests
 
 app = FastAPI()
@@ -16,6 +19,7 @@ class State(TypedDict):
     key_entities: List[str]
     confidence_score: str  # how confident LLM is in categorizing the request into a category
     follow_up_questions: List[str] # When info is missing/ambiguous
+    web_results: List[Dict]
 
 def get_intent_category(state: State):
     try:
@@ -36,17 +40,21 @@ def get_intent_category(state: State):
         **Instructions*:**
         1. Understand given user's request.
         2. output the intent of the user's request.
-        3. If the request does not fit into a standard category (dining, travel, gifting, cab_booking) create a new, intent_label like 'other_action_desired' (try to be as specific as possible e.f., "download_document", "password reset", "concert search", etc.).
+        3. If the request does not fit into a standard category (dining, travel, gifting, cab request) or you are not sure about the intent then output 'other'.
         
         **Output Format:** Enclose the final output within `<output>...</output>` tags."""
         
         prompt = prompt.format(state["query"])
         intent_by_llm = callLLM(prompt)
         print("intent: ", intent_by_llm,"\n\n--------\n\n")
+        
+        if(intent_by_llm.lower()=="other"):
+            return Command(update={"intent_catogory": intent_by_llm}, goto="web_search")
+        
         return Command(update={"intent_catogory": intent_by_llm}, goto="get_key_entities")
     except Exception as e:
         return Command(update={"intent_catogory": f"error: {str(e)}"}, goto="get_key_entities")
-
+# 3. If the request does not fit into a standard category (dining, travel, gifting, cab_booking) create a new, intent_label like 'other_action_desired' (try to be as specific as possible e.f., "download_document", "password reset", "concert search", etc.).
 def get_key_entities(state: State):
     try:
         prompt = """
@@ -141,7 +149,45 @@ def isInfoMissing(state: State):
     except Exception as e:
         return Command(update={"follow_up_questions": [f"error: {str(e)}"]}, goto="get_confidence_score")
 
+def web_search(state: State):
+    
+    query = state["query"]
+    try:
+        with DDGS() as ddgs:
+            results = []
+            for r in ddgs.text(query, max_results=3):
+                if r.get("title") != "EOF":  # Filter out bad results
+                    title = str(r.get("title", "No title"))
+                    description = str(r.get("body", "No description"))
+                    results.append({
+                        "title": title[:100] if len(title) > 100 else title,
+                        "url": r.get("href", "#"),
+                        "description": description[:200] if len(description) > 200 else description
+                    })
+            
+            if not results:
+                google_search_url = f"https://www.google.com/search?q={quote_plus(query)}"
+                results.append({
+                    "title": "Search on Google",
+                    "url": google_search_url,
+                    "description": f"No results found. Try Google search for: {query}"
+                })
+            
+            
+    except Exception as e:
+        print(f"Search error: {e}")
+        results = [{
+            "title": "Search Failed",
+            "url": "#",
+            "description": "An error occurred during search"
+        }]
+     
+    print("Resp: ", results)
+    
+    return Command(update={"web_results":results}, goto="get_confidence_score")
 
+
+    
 class RequestBody(BaseModel):
     query: str
 
@@ -151,6 +197,7 @@ graph.add_node("get_intent_category", get_intent_category)
 graph.add_node("get_key_entities", get_key_entities)
 graph.add_node("isInfoMissing", isInfoMissing)
 graph.add_node("get_confidence_score", get_confidence_score)
+graph.add_node("web_search", web_search)
 
 worker = graph.compile()
 
@@ -167,6 +214,19 @@ def chat(request: RequestBody):
 
         state = worker.invoke(state_input)
 
+        if(state["intent_catogory"].lower()=="other"):
+                return JSONResponse(
+                content={
+                    "intent_catogory": state["intent_catogory"],
+                    "search_response": state["web_results"],
+                    # "key_entities": state["key_entities"],
+                    "confidence_score": state["confidence_score"],
+                    # "follow_up_questions": state["follow_up_questions"]
+                },
+                status_code=200,
+                media_type="application/json",
+            )
+            
         return JSONResponse(
             content={
                 "intent_catogory": state["intent_catogory"],

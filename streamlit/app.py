@@ -12,10 +12,10 @@ if st.button("Submit"):
         url = "http://127.0.0.1:9090/response"
         payload = {"query": user_query}
         try:
-            response = requests.post(url, json=payload, timeout=10)
+            response = requests.post(url, json=payload)
             if response.status_code == 200:
                 st.success("API Response:")
-                st.json(response.json())  # Nicely formatted JSON!
+                st.json(response.json()) 
             else:
                 st.error(f"API Error: {response.status_code} - {response.text}")
         except Exception as e:
