@@ -1,20 +1,15 @@
-# Python virtual environments
+# Ignore full virtual environment folder
+swiggy/
 venv/
-**/Scripts/
-**/Include/
-**/Lib/
-**/__pycache__/
-
-# System/environment files
-.env
-
-# Jupyter and others
-.ipynb_checkpoints/
-**/share/jupyter/
 
 # Bytecode
+__pycache__/
 *.pyc
 
-# OS files
+# OS/editor files
 .DS_Store
 Thumbs.db
+.vscode/
+
+# Secrets
+.env
