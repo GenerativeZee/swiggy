@@ -63,27 +63,28 @@ streamlit run app.py
 
 ## Usage Examples
 
-#### Example Input:
+#### Example Input 1:
 
 - "Need a sunset-view table for two tonight; gluten-free menu a must"
 
-#### Example Output:
+#### Example Output 1:
 
-- ````json{
+- `````json
+    {
     "intent_category": "dining_reservation",
     "key_entities": "```json{
-      "party_size": 2,
-      "date": "tonight",
-      "table_preference": "sunset-view",
-      "dietary_restrictions": "gluten-free"
-    }```",
+        'party_size': 2,
+        'date': 'tonight',
+        'table_preference': 'sunset-view',
+        'dietary_restrictions': 'gluten-free'
+    }````",
     "confidence_score": "1",
     "follow_up_questions": "[
-      "Which restaurant would you like to make a reservation for?",
-      "What time would you like the reservation to be tonight?"
+        'Which restaurant would you like to make a reservation for?',
+        'What time would you like the reservation to be tonight?'
     ]"
   }
-  ````
+  `````
 
 ## 🔍 Test Cases
 
