@@ -42,6 +42,7 @@ def get_intent_category(state: State):
         
         prompt = prompt.format(state["query"])
         intent_by_llm = callLLM(prompt)
+        print("intent: ", intent_by_llm,"\n\n--------\n\n")
         return Command(update={"intent_catogory": intent_by_llm}, goto="get_key_entities")
     except Exception as e:
         return Command(update={"intent_catogory": f"error: {str(e)}"}, goto="get_key_entities")
@@ -72,6 +73,7 @@ def get_key_entities(state: State):
         
         prompt = prompt.format(state["query"], state["intent_catogory"])
         key_entities = callLLM(prompt)
+        print("key_entities: ", key_entities,"\n\n--------\n\n")
         return Command(update={"key_entities": key_entities}, goto="isInfoMissing")
     except Exception as e:
         return Command(update={"key_entities": [f"error: {str(e)}"]}, goto="isInfoMissing")
@@ -96,6 +98,7 @@ def get_confidence_score(state: State):
         
         prompt = prompt.format(state["query"], state["intent_catogory"])
         confidence_score = callLLM(prompt)
+        print("confidence_score: ", confidence_score,"\n\n--------\n\n")
         return Command(update={"confidence_score": confidence_score}, goto=END)
     except Exception as e:
         return Command(update={"confidence_score": f"error: {str(e)}"}, goto=END)
@@ -132,6 +135,8 @@ def isInfoMissing(state: State):
         
         prompt = prompt.format(state["intent_catogory"], state["intent_catogory"], state["query"], state["key_entities"])
         isMissing = callLLM(prompt)
+        print("isMissing: ", isMissing,"\n\n--------\n\n")
+        
         return Command(update={"follow_up_questions": isMissing}, goto="get_confidence_score")
     except Exception as e:
         return Command(update={"follow_up_questions": [f"error: {str(e)}"]}, goto="get_confidence_score")
@@ -186,3 +191,4 @@ def chat(request: RequestBody):
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run("main:app", host="0.0.0.0", port=9090, reload=True)
+

@@ -1,0 +1,20 @@
+# Python virtual environments
+venv/
+**/Scripts/
+**/Include/
+**/Lib/
+**/__pycache__/
+
+# System/environment files
+.env
+
+# Jupyter and others
+.ipynb_checkpoints/
+**/share/jupyter/
+
+# Bytecode
+*.pyc
+
+# OS files
+.DS_Store
+Thumbs.db
