@@ -10,19 +10,6 @@ A fuzzy input to structured JSON converter that categorizes user requests, extra
 - Suggests follow-up questions for missing information
 - Web search capability for non-standard requests
 
-## Project Structure
-
-.
-├── streamlit/ # Frontend implementation using Streamlit
-│ └── app.py
-├── utils/ # Utility functions
-│ └── utils.py
-├── .env # Environment variables
-├── .gitignore
-├── README.md
-├── main.py # Backend API implementation
-└── requirements.txt # Python dependencies
-
 ## Setup Instructions
 
 ### Prerequisites
