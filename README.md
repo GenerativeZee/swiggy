@@ -1,6 +1,9 @@
 # Personal Assistant Bot
 
-A fuzzy input to structured JSON converter that categorizes user requests, extracts key entities, and provides follow-up questions when needed.
+This project is a personal assistant bot that converts any fuzzy user input (e.g., “Need a sunset-view table for two tonight; gluten-free menu a must”) into a structured JSON response.  
+It identifies the intent category, key entities, confidence score, and suggests follow-up questions if information is missing or ambiguous.
+
+The backend API is built using Python, and the frontend UI is built with Streamlit.
 
 ## Features
 
