@@ -1,172 +1,177 @@
-[
-    {
-      "input": "Book a table for dinner",
-      "output": {
-        "intent_category": "dining_reservation",
-        "key_entities": {
-          "reservation_type": "table",
-          "meal_type": "dinner"
-        },
-        "confidence_score": "1.0",
-        "follow_up_questions": [
-          "For how many people?",
-          "What date would you like to book the table for?",
-          "And at what time?"
-        ]
-      }
-    },
-    {
-      "input": "Need a sunset-view table for two tonight; gluten-free menu a must",
-      "output": {
-        "intent_category": "dining_reservation",
-        "key_entities": {
-          "party_size": 2,
-          "date": "tonight",
-          "table_preference": "sunset-view",
-          "dietary_restrictions": "gluten-free"
-        },
-        "confidence_score": "1.0",
-        "follow_up_questions": [
-          "Which restaurant would you like to make a reservation for?",
-          "What time would you like the reservation to be tonight?"
-        ]
-      }
-    },
-    {
-      "input": "Need a rooftop table for 4 tonight - we're celebrating a birthday and need vegan options",
-      "output": {
-        "intent_category": "dining_reservation",
-        "key_entities": {
-          "seating_preference": "rooftop",
-          "party_size": 4,
-          "date_time": "tonight",
-          "occasion": "birthday",
-          "dietary_preference": "vegan"
-        },
-        "confidence_score": "1.0",
-        "follow_up_questions": [
-          "What time would you like to make the reservation for tonight?",
-          "Which restaurant would you like to book?"
-        ]
-      }
-    },
-    {
-      "input": "Book me a cab from Indiranagar to the airport at 5pm today",
-      "output": {
-        "intent_category": "cab_booking",
-        "key_entities": {
-          "pickup_location": "Indiranagar",
-          "dropoff_location": "airport",
-          "time": "17:00",
-          "date": "today"
-        },
-        "confidence_score": "1.0",
-        "follow_up_questions": [
-          "What type of cab would you like to book?",
-          "How many passengers will be traveling?"
-        ]
-      }
-    },
-    {
-      "input": "Schedule a dentist appointment near me on Saturday morning",
-      "output": {
-        "intent_category": "medical_appointment_scheduling",
-        "key_entities": {
-          "appointment_type": "dentist",
-          "date": "Saturday",
-          "time_of_day": "morning",
-          "location_descriptor": "near me"
-        },
-        "confidence_score": "1.0",
-        "follow_up_questions": [
-          "Who is this appointment for?",
-          "Could you please provide a specific location or zip code?",
-          "What is the reason for your visit?"
-        ]
-      }
-    },
-    {
-      "input": "Looking for something eco-friendly to gift my sister",
-      "output": {
-        "intent_category": "gifting_ideas",
-        "key_entities": {
-          "recipient": "sister",
-          "gift_attributes": "eco-friendly"
-        },
-        "confidence_score": "1.0",
-        "follow_up_questions": [
-          "What's the occasion you're looking for a gift for?",
-          "What's your budget for the gift?",
-          "What are some of your sister's other interests or hobbies?"
-        ]
-      }
-    },
-    {
-      "input": "Book a life coach for career guidance.",
-      "output": {
-        "intent_category": "life_coach_booking",
-        "key_entities": {
-          "service_type": "life_coach",
-          "purpose": "career guidance"
-        },
-        "confidence_score": "1.0",
-        "follow_up_questions": [
-          "What date would you like to book the session?",
-          "What time would you prefer for your session?",
-          "How long would you like the session to be?"
-        ]
-      }
-    },
-    {
-      "input": "I wish I could teleport to Bali and have sushi on the beach",
-      "output": {
-        "intent_category": "expression_of_desire",
-        "key_entities": {
-          "destination": "Bali",
-          "food_item": "sushi",
-          "dining_location": "on the beach"
-        },
-        "confidence_score": "1.0",
-        "follow_up_questions": [
-          "When would you ideally like to make this trip?",
-          "And for how many people would this be?"
-        ]
-      }
-    },
-    {
-      "input": "Where can I go for a peaceful weekend near Delhi?",
-      "output": {
-        "intent_category": "travel_planning",
-        "key_entities": {
-          "destination_base": "Delhi",
-          "destination_proximity": "near",
-          "travel_duration": "weekend",
-          "travel_vibe": "peaceful"
-        },
-        "confidence_score": "1.0",
-        "follow_up_questions": [
-          "Do you have a specific budget in mind for this trip?",
-          "How many people will be traveling?",
-          "What kind of peaceful activities or experiences are you hoping to find?",
-          "Do you have any preferences for accommodation, such as a resort, a quiet homestay, or something else?"
-        ]
-      }
-    },
-    {
-      "input": "Want to book a holiday for Goa next weekend",
-      "output": {
-        "intent_category": "travel_planning",
-        "key_entities": {
-          "destination": "Goa",
-          "date_range": "next weekend"
-        },
-        "confidence_score": "1.0",
-        "follow_up_questions": [
-          "How many people will be traveling?",
-          "What is your departure city?",
-          "Are you looking for flights, accommodation, or a complete package?"
-        ]
-      }
-    }
-  ]
-  
+Input: "Book a table for dinner"
+Output: {
+  "intent_category": "dining_reservation",
+  "key_entities": "``` json{
+    "reservation_type": "table",
+    "meal_type": "dinner"
+  }```",
+  "confidence_score": "1.0",
+  "follow_up_questions": "[
+    "For how many people?",
+    "What date would you like to book the table for?",
+    "And at what time?"
+  ]"
+}
+
+-----------------------------
+
+input2: "Need a sunset-view table for two tonight; gluten-free menu a must"
+output2: {
+  "intent_category": "dining_reservation",
+  "key_entities": "```json{
+    "party_size": 2,
+    "date": "tonight",
+    "table_preference": "sunset-view",
+    "dietary_restrictions": "gluten-free"
+  }````",
+  "confidence_score": "1",
+  "follow_up_questions": "[
+    "Which restaurant would you like to make a reservation for?",
+    "What time would you like the reservation to be tonight?"
+  ]"
+}
+
+-----------------------------
+
+input3: "Need a rooftop table for 4 tonight - we're celebrating a birthday and need vegan options"
+output3: {
+  "intent_category": "dining_reservation",
+  "key_entities": "````json {
+    "seating_preference": "rooftop",
+    "party_size": 4,
+    "date_time": "tonight",
+    "occasion": "birthday",
+    "dietary_preference": "vegan"
+  }```",
+  "confidence_score": "1.0",
+  "follow_up_questions": "[
+    "What time would you like to make the reservation for tonight?",
+    "Which restaurant would you like to book?"
+  ]"
+}
+
+-----------------------------
+
+input4: "Book me a cab from Indiranagar to the airport at 5pm today"
+output4: {
+  "intent_category": "cab_booking",
+  "key_entities": "```json{
+    "pickup_location": "Indiranagar",
+    "dropoff_location": "airport",
+    "time": "17:00",
+    "date": "2023-10-27"
+  }```",
+  "confidence_score": "1",
+  "follow_up_questions": "[
+    "What type of cab would you like to book?",
+    "How many passengers will be traveling?"
+  ]"
+}
+
+-----------------------------
+
+input5: "Schedule a dentist appointment near me on Saturday morning"
+output5: {
+  "intent_category": "medical_appointment_scheduling",
+  "key_entities": "```json{
+    "appointment_type": "dentist",
+    "date": "Saturday",
+    "time_of_day": "morning",
+    "location_descriptor": "near me"
+  }```",
+  "confidence_score": "1.0",
+  "follow_up_questions": "[
+    "Who is this appointment for?",
+    "Could you please provide a specific location or zip code?",
+    "What is the reason for your visit?"
+  ]"
+}
+
+-----------------------------
+
+input6: "Looking for something eco-friendly to gift my sister"
+output6: {
+  "intent_category": "gifting_ideas",
+  "key_entities": "```json{
+    "recipient": "sister",
+    "gift_attributes": "eco-friendly"
+  }```",
+  "confidence_score": "1",
+  "follow_up_questions": "[
+    "What's the occasion you're looking for a gift for?",
+    "What's your budget for the gift?",
+    "What are some of your sister's other interests or hobbies?"
+  ]"
+}
+
+-----------------------------
+
+input7: "Book a life coach for career guidance."
+output7: {
+  "intent_category": "life_coach_booking",
+  "key_entities": "```json{
+    "service_type": "life_coach",
+    "purpose": "career guidance"
+  }```",
+  "confidence_score": "1.0",
+  "follow_up_questions": "[
+    "What date would you like to book the session?",
+    "What time would you prefer for your session?",
+    "How long would you like the session to be?"
+  ]"
+}
+
+-----------------------------
+
+
+input8: "I wish I could teleport to Bali and have sushi on the beach"
+output8: {
+  "intent_category": "expression_of_desire",
+  "key_entities": "```json{
+    "destination": "Bali",
+    "food_item": "sushi",
+    "dining_location": "on the beach"
+  }```",
+  "confidence_score": "1",
+  "follow_up_questions": "[
+    "When would you ideally like to make this trip?",
+    "And for how many people would this be?"
+  ]"
+}
+
+-----------------------------
+
+input9: "Where can I go for a peaceful weekend near Delhi?"
+output9: {
+  "intent_category": "travel_planning",
+  "key_entities":"```json {
+    "destination_base": "Delhi",
+    "destination_proximity": "near",
+    "travel_duration": "weekend",
+    "travel_vibe": "peaceful"
+  }```",
+  "confidence_score": "1",
+  "follow_up_questions": "[
+    "Do you have a specific budget in mind for this trip?",
+    "How many people will be traveling?",
+    "What kind of peaceful activities or experiences are you hoping to find?",
+    "Do you have any preferences for accommodation, such as a resort, a quiet homestay, or something else?"
+  ]"
+}
+
+-----------------------------
+
+input10: "Want to book a holiday for Goa next weekend"
+output10: {
+  "intent_category": "travel_planning",
+  "key_entities": "```json{
+    "destination": "Goa",
+    "date_range": "next weekend"
+  }```",
+  "confidence_score": "1.0",
+  "follow_up_questions": "[
+    "How many people will be traveling?",
+    "What is your departure city?",
+    "Are you looking for flights, accommodation, or a complete package?"
+  ]"
+}
