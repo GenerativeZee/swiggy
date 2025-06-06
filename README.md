@@ -61,4 +61,19 @@ cd streamlit
 streamlit run app.py
 ```
 
-The frontend will be available at http://localhost:8501 in your browser.
+## Usage Examples
+
+#### Example Input 1:
+
+- "Need a sunset-view table for two tonight; gluten-free menu a must"
+
+#### Example Output 1:
+
+- ````json
+  {
+    "intent_catogory": "dining_reservation",
+    "key_entities": "```json\n{\n  \"table_preference\": \"sunset-view\",\n  \"party_size\": 2,\n  \"date\": \"tonight\",\n  \"dietary_restrictions\": \"gluten-free\"\n}\n```",
+    "confidence_score": "1",
+    "follow_up_questions": "[\"What time would you like the reservation for?\", \"What type of cuisine or restaurant are you interested in?\", \"Which location or area would you prefer?\"]"
+  }
+  ````
